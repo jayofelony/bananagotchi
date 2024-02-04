@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: pwnagotchi
+Version: 2.8.1
+Summary: (⌐■_■) - Deep Reinforcement Learning instrumenting bettercap for WiFI pwning.
+Home-page: https://pwnagotchi.ai/
+Author: evilsocket && the dev team
+Author-email: evilsocket@gmail.com
+License: GPL
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Environment :: Console
+License-File: LICENSE.md
+Requires-Dist: Pillow
+Requires-Dist: PyYAML
+Requires-Dist: RPi.GPIO
+Requires-Dist: file-read-backwards
+Requires-Dist: flask
+Requires-Dist: flask-cors
+Requires-Dist: flask-wtf
+Requires-Dist: gast
+Requires-Dist: gym
+Requires-Dist: inky
+Requires-Dist: pycryptodome
+Requires-Dist: pydrive2
+Requires-Dist: python-dateutil
+Requires-Dist: requests
+Requires-Dist: rpi_hardware_pwm
+Requires-Dist: scapy
+Requires-Dist: shimmy
+Requires-Dist: smbus2
+Requires-Dist: spidev
+Requires-Dist: stable_baselines3
+Requires-Dist: toml
+Requires-Dist: torch
+Requires-Dist: torchvision
+Requires-Dist: tweepy
+Requires-Dist: websockets
