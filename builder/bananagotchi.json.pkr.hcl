@@ -21,7 +21,7 @@ variable "pwn_version" {
   type = string
 }
 
-source "arm" "rpi64-pwnagotchi" {
+source "arm" "bpi64-pwnagotchi" {
   file_checksum_url             = "https://github.com/jayofelony/bananagotchi/releases/download/v1.0/Bpi-m4zero_1.0.0_debian_bookworm_minimal_linux6.1.31.img.xz.sha256"
   file_urls                     = ["https://github.com/jayofelony/bananagotchi/releases/download/v1.0/Bpi-m4zero_1.0.0_debian_bookworm_minimal_linux6.1.31.img.xz"]
   file_checksum_type            = "sha256"
@@ -55,8 +55,8 @@ source "arm" "rpi64-pwnagotchi" {
 # documentation for build blocks can be found here:
 # https://www.packer.io/docs/from-1.5/blocks/build
 build {
-  name = "Raspberry Pi 64 Pwnagotchi"
-  sources = ["source.arm.rpi64-pwnagotchi"]
+  name = "Banana Pi 64 Pwnagotchi"
+  sources = ["source.arm.bpi64-pwnagotchi"]
 
   provisioner "file" {
     destination = "/usr/bin/"
