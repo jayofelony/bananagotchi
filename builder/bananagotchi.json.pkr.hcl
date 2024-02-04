@@ -1,11 +1,5 @@
-# This is not working quite yet
-# https://github.com/mkaczanowski/packer-builder-arm/pull/172
 packer {
   required_plugins {
-    #arm = {
-    #  version = "~> 1"
-    #  source  = "github.com/cdecoux/builder-arm"
-    #}
     ansible = {
       source  = "github.com/hashicorp/ansible"
       version = "~> 1"
@@ -21,42 +15,23 @@ variable "pwn_version" {
   type = string
 }
 
-source "arm" "bpi64-pwnagotchi" {
-  file_checksum_url             = "https://github.com/jayofelony/bananagotchi/releases/download/v1.0/Bpi-m4zero_1.0.0_debian_bookworm_minimal_linux6.1.31.img.xz.sha256"
-  file_urls                     = ["https://github.com/jayofelony/bananagotchi/releases/download/v1.0/Bpi-m4zero_1.0.0_debian_bookworm_minimal_linux6.1.31.img.xz"]
-  file_checksum_type            = "sha256"
-  file_target_extension         = "xz"
-  file_unarchive_cmd            = ["unxz", "$ARCHIVE_PATH"]
-  image_path                    = "../../../pwnagotchi-rpi-bookworm-${var.pwn_version}-arm64.img"
-  qemu_binary_source_path       = "/usr/bin/qemu-aarch64-static"
-  qemu_binary_destination_path  = "/usr/bin/qemu-aarch64-static"
-  image_build_method            = "resize"
-  image_size                    = "9G"
-  image_type                    = "dos"
-  image_partitions {
-    name         = "boot"
-    type         = "c"
-    start_sector = "8192"
-    filesystem   = "fat"
-    size         = "256M"
-    mountpoint   = "/boot/firmware"
-  }
-  image_partitions {
-    name         = "root"
-    type         = "83"
-    start_sector = "532480"
-    filesystem   = "ext4"
-    size         = "0"
-    mountpoint   = "/"
-  }
+source "arm-image" "bananagotchi" {
+  iso_checksum      = "file:https://github.com/jayofelony/bananagotchi/releases/download/v1.0/Bpi-m4zero_1.0.0_debian_bookworm_minimal_linux6.1.31.img.xz.sha256"
+  iso_url           = "https://github.com/jayofelony/bananagotchi/releases/download/v1.0/Bpi-m4zero_1.0.0_debian_bookworm_minimal_linux6.1.31.img.xz"
+  image_type        = "armbian"
+  image_arch        = "arm64"
+  qemu_args         = ["-r", "6.1.31-sun50iw9"]
+  target_image_size = 9368709120
+  output_filename   = "../../../bananagotchi-$(pwn_version).img"
 }
 
 # a build block invokes sources and runs provisioning steps on them. The
 # documentation for build blocks can be found here:
 # https://www.packer.io/docs/from-1.5/blocks/build
 build {
-  name = "Banana Pi 64 Pwnagotchi"
-  sources = ["source.arm.bpi64-pwnagotchi"]
+  name    = "bananagotchi"
+  sources = ["source.arm-image.bananagotchi"]
+
 
   provisioner "file" {
     destination = "/usr/bin/"
@@ -72,10 +47,6 @@ build {
   }
   provisioner "shell" {
     inline = ["chmod +x /usr/bin/*"]
-  }
-
-  provisioner "shell" {
-    inline = ["dpkg --add-architecture armhf"]
   }
 
   provisioner "file" {
