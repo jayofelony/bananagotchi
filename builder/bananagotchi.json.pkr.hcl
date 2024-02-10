@@ -16,8 +16,8 @@ variable "pwn_version" {
 }
 
 source "arm-image" "bananagotchi" {
-  iso_checksum      = "file:https://github.com/jayofelony/bananagotchi/releases/download/v1.0/Bpi-m4zero_1.0.0_debian_bookworm_minimal_linux6.1.31.img.xz.sha256"
-  iso_url           = "https://github.com/jayofelony/bananagotchi/releases/download/v1.0/Bpi-m4zero_1.0.0_debian_bookworm_minimal_linux6.1.31.img.xz"
+  iso_checksum      = "file:https://github.com/jayofelony/bananagotchi/releases/download/v1.0/bpim40.img.xz.sha256"
+  iso_url           = "https://github.com/jayofelony/bananagotchi/releases/download/v1.0/bpim40.img.xz"
   image_type        = "armbian"
   image_arch        = "arm64"
   qemu_args         = ["-r", "6.1.31-sun50iw9"]
