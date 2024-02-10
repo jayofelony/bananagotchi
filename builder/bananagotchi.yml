@@ -177,6 +177,7 @@
       blockinfile:
         dest: /etc/modules-load.d/modules.conf
         state: present
+        insertafter: EOF
         block: |
           i2c-dev
           g_ether
