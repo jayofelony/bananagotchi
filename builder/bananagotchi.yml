@@ -173,6 +173,14 @@
         line: "nameserver 8.8.8.8"
         insertafter: EOF
 
+    - name: set g_ether and i2c-dev
+      blockinfile:
+        dest: /etc/modules-load.d/modules.conf
+        state: present
+        block: |
+          i2c-dev
+          g_ether
+
     - name: change hostname
       lineinfile:
         dest: /etc/hostname
