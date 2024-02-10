@@ -1,6 +1,5 @@
 Pillow
 PyYAML
-RPi.GPIO
 file-read-backwards
 flask
 flask-cors
