@@ -167,6 +167,12 @@
         update_cache: yes
         install_recommends: false
 
+    - name: set resolv.conf
+      lineinfile:
+        dest: /etc/resolv.conf
+        line: "nameserver 8.8.8.8"
+        insertafter: EOF
+
     - name: change hostname
       lineinfile:
         dest: /etc/hostname
