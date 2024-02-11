@@ -1,29 +1,18 @@
-# Pwnagotchi-Torch
-<a href="https://github.com/jayofelony/pwnagotchi-bookworm/releases/latest"><img alt="Release" src="https://img.shields.io/github/release/jayofelony/pwnagotchi-bookworm.svg"></a><br/>
-**This fork of [Pwnagotchi](https://www.pwnagotchi.ai) is only for 64-bit Raspberry Pi's. Such as the 02W, 3(b+) and 4(b) ~~and the new Raspberry Pi 5~~!!.**
+# Bananagotchi
+<a href="https://github.com/jayofelony/bananagotchi/releases/latest"><img alt="Release" src="https://img.shields.io/github/release/jayofelony/bananagotchi.svg"></a><br/>
 
-It seems the Pi 5 is unable to run in monitor mode, will keep you updated on this.
-
-If you are using an older 32-bit version Raspberry Pi, ZeroWH, use this [fork](https://github.com/jayofelony/pwnagotchi-torch/releases/tag/v2.6.4) and make sure you download the `armhf` version.
-
+** THIS FORK IS BANANA PI M4 ZERO ONLY!!**
 ---
-Download the latest image file [here](https://github.com/jayofelony/pwnagotchi-bookworm/releases/tag/v2.7.9), and let it auto-update from here on out.
+Be prepared to reflash every new image released! As this is a WIP.
 
-**Use RPi imager to flash, please don't flash a new user as this will mess with logs created.**
-  - Select `Use Custom Image`
-  - Browse for the downloaded image file
-  - Select No under `Use OS Customization`
 
-SSH credentials are `pi/raspberry`.
+SSH credentials are `pi/banana`.
 
 # Donations: 
 I would like to thank 
-- [findingmoist](https://github.com/findingmoist) 
-- [kr4k0n](https://github.com/kr4k0n)
+
 
 for donating!
-
-[Pwnagotchi-Torch](https://www.patreon.com/pwnagotchi_torch)
 
 [GH Sponsor](https://github.com/sponsors/jayofelony)
 
