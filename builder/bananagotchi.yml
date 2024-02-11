@@ -168,9 +168,12 @@
         install_recommends: false
 
     - name: set resolv.conf
-      lineinfile:
+      blockinfile:
         dest: /etc/resolv.conf
-        line: "nameserver 8.8.8.8"
+        state: present
+        block: |
+          nameserver 8.8.8.8
+          nameserver 8.8.4.4
         insertafter: EOF
 
     - name: set g_ether and i2c-dev
