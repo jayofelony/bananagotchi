@@ -3,7 +3,7 @@
 
 ** THIS FORK IS BANANA PI M4 ZERO ONLY!!**
 ---
-Be prepared to reflash every new image released! As this is a WIP.
+Be prepared to reflash every new image released! As this is a WIP. No displays supported yet, so run with display disabled.
 
 
 SSH credentials are `pi/banana`.
