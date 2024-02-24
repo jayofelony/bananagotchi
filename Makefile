@@ -54,7 +54,7 @@ $(SDIST): setup.py pwnagotchi
 # If the packer or ansible files are updated, rebuild the image.
 pwnagotchi: $(SDIST) builder/bananagotchi.json.pkr.hcl builder/bananagotchi.yml $(shell find builder/data -type f)
 
-	cd builder && sudo $(UNSHARE) /usr/bin/packer build -var "pwn_hostname=$(PWN_HOSTNAME)" -var "pwn_version=$(PWN_VERSION)" bananagotchi.json.pkr.hcl
+	cd builder && && sudo $(PACKER) init && sudo $(UNSHARE) /usr/bin/packer build -var "pwn_hostname=$(PWN_HOSTNAME)" -var "pwn_version=$(PWN_VERSION)" bananagotchi.json.pkr.hcl
 
 .PHONY: image
 image: pwnagotchi
