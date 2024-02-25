@@ -1,18 +1,7 @@
-# Bananagotchi
-<a href="https://github.com/jayofelony/bananagotchi/releases/latest"><img alt="Release" src="https://img.shields.io/github/release/jayofelony/bananagotchi.svg"></a><br/>
-
-** THIS FORK IS BANANA PI M4 ZERO ONLY!!**
----
-Be prepared to reflash every new image released! As this is a WIP. No displays supported yet, so run with display disabled.
-
-
-SSH credentials are `pi/banana`.
-
-# Donations: 
-I would like to thank 
-
-
-for donating!
+# Pwnagotchi
+This is the main source for all forks:
+- RPiZeroW only (32bit)
+- RPiZero2W, RPi3, RPi4, RPi5 (64bit)
 
 [GH Sponsor](https://github.com/sponsors/jayofelony)
 
