@@ -50,7 +50,6 @@ packer:
 image:
 	export=LC_ALL=C.utf-8
 	cd builder && sudo /usr/bin/packer init data/64bit/bananagotchi.json.pkr.hcl && sudo $(UNSHARE) /usr/bin/packer build -var "pwn_hostname=bananagotchi" -var "pwn_version=$(PWN_VERSION)" data/64bit/bananagotchi.json.pkr.hcl
-	cd ~ && sudo pishrink -vaZ bananagotchi-$(PWN_VERSION).img
 
 
 clean:
