@@ -47,7 +47,7 @@ packer:
 	git clone https://github.com/solo-io/packer-builder-arm-image /tmp/packer-builder-arm-image
 	cd /tmp/packer-builder-arm-image && go get -d ./... && go build
 
-image: banagotchi
+image: bananagotchi
 
 bananagotchi: clean packer
 	export=LC_ALL=C.utf-8
