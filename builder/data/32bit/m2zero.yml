@@ -269,6 +269,17 @@
         QEMU_UNAME: "{{ kernel.full }}"
         ARCHFLAGS: "-arch armv7l"
 
+    - name: backup original driver
+      command: "mv /usr/lib/modules/{{ kernell.full }}/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko.xz /usr/lib/modules/{{ kernel.full }}/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko.xz.orig"
+
+    - name: copy modified driver
+      copy:
+        src: "/usr/local/src/nexmon/patches/driver/brcmfmac_6.1.y-nexmon/brcmfmac.ko"
+        dest: "/usr/lib/modules/{{ kernel.full }}/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko"
+
+    - name: load brcmfmac drivers
+      command: "/sbin/depmod -a {{ kernel.full }}"
+
     - name: remove nexmon folder
       file:
         state: absent
