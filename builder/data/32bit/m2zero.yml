@@ -45,11 +45,6 @@
         source: "https://github.com/jayofelony/pwngrid.git"
         url: "https://github.com/jayofelony/pwngrid/releases/download/v1.10.5/pwngrid-1.10.5-aarch64.zip"
       apt:
-        downgrade:
-          - libpcap-dev_1.9.1-4_arm64.deb
-          - libpcap0.8-dbg_1.9.1-4_arm64.deb
-          - libpcap0.8-dev_1.9.1-4_arm64.deb
-          - libpcap0.8_1.9.1-4_arm64.deb
         hold:
           - firmware-atheros
           - firmware-brcm80211
