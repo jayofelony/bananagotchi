@@ -49,7 +49,6 @@ packer:
 	sudo cp /tmp/packer-builder-arm-image/packer-plugin-arm-image /usr/bin
 
 image:
-	export=LC_ALL=C.utf-8
 	cd builder && sudo /usr/bin/packer init bananagotchi.json.pkr.hcl && sudo $(UNSHARE) /usr/bin/packer build -var "pwn_hostname=bananagotchi" -var "pwn_version=$(PWN_VERSION)" bananagotchi.json.pkr.hcl
 
 
