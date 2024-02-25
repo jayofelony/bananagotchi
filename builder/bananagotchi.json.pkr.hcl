@@ -22,7 +22,7 @@ source "arm-image" "m4zero" {
   image_arch        = "arm64"
   qemu_args         = ["-r", "6.1.31-sun50iw9"]
   target_image_size = 9368709120
-  output_filename   = "../../../bananagotchi-64bit.img"
+  output_filename   = "bananagotchi-64bit.img"
 }
 
 source "arm-image" "m2zero" {
@@ -32,7 +32,7 @@ source "arm-image" "m2zero" {
   image_arch        = "arm64"
   qemu_args         = ["-r", "6.1.31-sun50iw9"]
   target_image_size = 9368709120
-  output_filename   = "../../../bananagotchi-32bit.img"
+  output_filename   = "bananagotchi-32bit.img"
 }
 
 # a build block invokes sources and runs provisioning steps on them. The
