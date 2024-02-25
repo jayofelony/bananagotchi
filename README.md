@@ -1,4 +1,4 @@
-# Pwnagotchi
+# Bananagotchi
 This is the main source for the BananaPi fork:
 - BPi M4 Zero
 
