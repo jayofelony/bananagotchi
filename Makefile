@@ -46,6 +46,7 @@ packer:
 	sudo mv /tmp/packer /usr/bin/packer
 	git clone https://github.com/solo-io/packer-builder-arm-image /tmp/packer-builder-arm-image
 	cd /tmp/packer-builder-arm-image && go mod download && go build
+	sudo cp /tmp/packer-builder-arm-image/packer-plugin-arm-image /usr/bin
 
 image:
 	export=LC_ALL=C.utf-8
