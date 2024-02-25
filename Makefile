@@ -47,17 +47,8 @@ packer:
 	cd /tmp/packer-builder-arm-image && go get -d ./... && go build
 	sudo cp /tmp/packer-builder-arm-image/packer-plugin-arm-image /usr/bin
 
-SDIST := dist/pwnagotchi-$(PWN_VERSION).tar.gz
-$(SDIST): setup.py pwnagotchi
-	python3 setup.py sdist
-
-# If the packer or ansible files are updated, rebuild the image.
-pwnagotchi: $(SDIST) builder/bananagotchi.json.pkr.hcl builder/bananagotchi.yml $(shell find builder/data -type f)
-
+image:
 	cd builder && sudo /usr/bin/packer init bananagotchi.json.pkr.hcl && sudo $(UNSHARE) /usr/bin/packer build -var "pwn_hostname=$(PWN_HOSTNAME)" -var "pwn_version=$(PWN_VERSION)" bananagotchi.json.pkr.hcl
-
-.PHONY: image
-image: pwnagotchi
 
 clean:
 	- rm -rf /tmp/packer-builder-arm-image
