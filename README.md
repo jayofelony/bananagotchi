@@ -1,7 +1,6 @@
 # Pwnagotchi
-This is the main source for all forks:
-- RPiZeroW only (32bit)
-- RPiZero2W, RPi3, RPi4, RPi5 (64bit)
+This is the main source for the BananaPi fork:
+- BPi M4 Zero
 
 [GH Sponsor](https://github.com/sponsors/jayofelony)
 
