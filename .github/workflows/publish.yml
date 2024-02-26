@@ -44,11 +44,12 @@ jobs:
       - name: Transfer 64bit.img to docker and give permissions
         run: sudo chown runner:docker "bananagotchi-64bit.img"
 
-      - name: download pishrink
-        run: wget https://raw.githubusercontent.com/Drewsif/PiShrink/master/pishrink.sh
-
-      - name: Compress 64bit.img file using pishrink
-        run: sudo chmod +x "pishrink.sh"; sudo "pishrink.sh" -aZ "bananagotchi-64bit.img"
+      - name: PiShrink
+        run: |
+          wget https://raw.githubusercontent.com/Drewsif/PiShrink/master/pishrink.sh
+          chmod +x pishrink.sh
+          sudo mv pishrink.sh /usr/local/bin/pishrink
+          find /home/runner/work/ -type f -name "*.img" -exec sudo pishrink -aZ {} \;
 
       - name: Change name of 64.img.xz to add version
         run: mv "bananagotchi-64bit.img.xz" "bananagotchi-$VERSION-64bit.img.xz"
