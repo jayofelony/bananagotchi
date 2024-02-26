@@ -1,4 +1,4 @@
-main.name = "pwnagotchi"
+main.name = "bananagotchi"
 main.lang = "en"
 main.whitelist = [
     "EXAMPLE_NETWORK",
