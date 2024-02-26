@@ -1,5 +1,5 @@
 PACKER_VERSION := 1.10.1
-PWN_HOSTNAME := pwnagotchi
+PWN_HOSTNAME := bananagotchi
 PWN_VERSION := $(shell cut -d"'" -f2 < pwnagotchi/_version.py)
 
 MACHINE_TYPE := $(shell uname -m)
@@ -40,7 +40,7 @@ compile_langs:
 		./scripts/language.sh compile $$(basename $$lang); \
 	done
 
-packer:
+packer: clean
 	curl https://releases.hashicorp.com/packer/$(PACKER_VERSION)/packer_$(PACKER_VERSION)_linux_amd64.zip -o /tmp/packer.zip
 	unzip /tmp/packer.zip -d /tmp
 	sudo mv /tmp/packer /usr/bin/packer
@@ -48,9 +48,16 @@ packer:
 	cd /tmp/packer-builder-arm-image && go mod download && go build
 	sudo cp /tmp/packer-builder-arm-image/packer-plugin-arm-image /usr/bin
 
-image:
-	cd builder && sudo /usr/bin/packer init bananagotchi.json.pkr.hcl && sudo $(UNSHARE) /usr/bin/packer build -var "pwn_hostname=bananagotchi" -var "pwn_version=$(PWN_VERSION)" bananagotchi.json.pkr.hcl
+image: clean packer
+	export LC_ALL=C.utf-8
+	cd builder && sudo /usr/bin/packer init bananagotchi.json.pkr.hcl && sudo $(UNSHARE) /usr/bin/packer build -var "pwn_hostname=$(PWN_HOSTNAME)" -var "pwn_version=$(PWN_VERSION)" bananagotchi.json.pkr.hcl
 
+32bit: clean packer
+	cd builder && sudo /usr/bin/packer init data/32bit/m2zero.json.pkr.hcl && sudo $(UNSHARE) /usr/bin/packer build -var "pwn_hostname=$(PWN_HOSTNAME)" -var "pwn_version=$(PWN_VERSION)" data/32bit/m2zero.json.pkr.hcl
+
+64bit: clean packer
+	export LC_ALL=C.utf-8
+	cd builder && sudo /usr/bin/packer init data/64bit/m4zero.json.pkr.hcl && sudo $(UNSHARE) /usr/bin/packer build -var "pwn_hostname=$(PWN_HOSTNAME)" -var "pwn_version=$(PWN_VERSION)" data/64bit/m4zero.json.pkr.hcl
 
 clean:
 	- rm -rf /tmp/packer*
