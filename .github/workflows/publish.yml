@@ -58,7 +58,6 @@ jobs:
         with:
           tag_name: ${{ env.VERSION }}
           name: Pwnagotchi v${{ env.VERSION }}
-          token: ${{ secrets.TOKEN }}
           files: |
               bananagotchi-${{ env.VERSION }}-64bit.img.xz
           body: ${{ env.RELEASE_BODY }}

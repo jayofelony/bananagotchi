@@ -198,6 +198,7 @@ ui.web.on_frame = ""
 ui.display.enabled = false
 ui.display.rotation = 180
 ui.display.type = "waveshare_4"
+ui.display.color = "black" # required for waveshare_2
 
 bettercap.handshakes = "/root/handshakes"
 bettercap.silence = [
