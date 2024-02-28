@@ -34,7 +34,7 @@ jobs:
         run: ls -la .; pwd; make all
 
       - name: Transfer 64bit.img to docker and give permissions
-        run: sudo chown runner:docker "bananagotchi-64bit.img"
+        run: sudo chown runner:docker "*.img"
 
       - name: PiShrink
         run: |
@@ -44,7 +44,9 @@ jobs:
           find /home/runner/work/ -type f -name "*.img" -exec sudo pishrink -aZ {} \;
 
       - name: Change name of 64.img.xz to add version
-        run: mv "bananagotchi-64bit.img.xz" "bananagotchi-$VERSION-64bit.img.xz"
+        run: |
+          mv "bananagotchi-64bit.img.xz" "bananagotchi-$VERSION-64bit.img.xz"
+          mv "bananagotchi-32bit.img.xz" "bananagotchi-$VERSION-32bit.img.xz"
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -53,6 +55,7 @@ jobs:
           name: Bananagotchi v${{ env.VERSION }}
           files: |
               bananagotchi-${{ env.VERSION }}-64bit.img.xz
+              bananagotchi-${{ env.VERSION }}-32bit.img.xz
           body: ${{ env.RELEASE_BODY }}
           prerelease: true
           generate_release_notes: true
