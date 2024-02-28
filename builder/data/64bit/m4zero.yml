@@ -9,7 +9,7 @@
       full: "6.1.79"
     pwnagotchi:
       hostname: "{{ lookup('env', 'PWN_HOSTNAME') | default('bananagotchi', true) }}"
-      version: "{{ lookup('env', 'PWN_VERSION') | default('pwnagotchi-torch', true) }}"
+      version: "{{ lookup('env', 'PWN_VERSION') | default('bananagotchi', true) }}"
     system:
       boot_options:
         - "dtoverlay=dwc2"
@@ -404,7 +404,7 @@
     - name: Add pwnlog alias
       lineinfile:
         dest: /home/pi/.bashrc
-        line: "\nalias pwnlog='tail -f -n300 /var/log/pwn*.log | sed --unbuffered \"s/,[[:digit:]]\\{3\\}\\]//g\" | cut -d \" \" -f 2-'"
+        line: "\nalias pwnlog='tail -f -n300 /etc/pwnagotchi/log/pwn*.log | sed --unbuffered \"s/,[[:digit:]]\\{3\\}\\]//g\" | cut -d \" \" -f 2-'"
         insertafter: EOF
 
     - name: Add pwnver alias

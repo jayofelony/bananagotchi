@@ -49,15 +49,15 @@ packer: clean
 	sudo cp /tmp/packer-builder-arm-image/packer-plugin-arm-image /usr/bin
 
 image: clean packer
-	export LC_ALL=C.utf-8
+	export LC_ALL=C.utf8
 	cd builder && sudo /usr/bin/packer init bananagotchi.json.pkr.hcl && sudo $(UNSHARE) /usr/bin/packer build -var "pwn_hostname=$(PWN_HOSTNAME)" -var "pwn_version=$(PWN_VERSION)" bananagotchi.json.pkr.hcl
 
 32bit: clean packer
-	export LC_ALL=C.utf-8
+	export LC_ALL=C.utf8
 	cd builder && sudo /usr/bin/packer init data/32bit/m2zero.json.pkr.hcl && sudo $(UNSHARE) /usr/bin/packer build -var "pwn_hostname=$(PWN_HOSTNAME)" -var "pwn_version=$(PWN_VERSION)" data/32bit/m2zero.json.pkr.hcl
 
 64bit: clean packer
-	export LC_ALL=C.utf-8
+	export LC_ALL=C.utf8
 	cd builder && sudo /usr/bin/packer init data/64bit/m4zero.json.pkr.hcl && sudo $(UNSHARE) /usr/bin/packer build -var "pwn_hostname=$(PWN_HOSTNAME)" -var "pwn_version=$(PWN_VERSION)" data/64bit/m4zero.json.pkr.hcl
 
 clean:
