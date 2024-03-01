@@ -70,7 +70,6 @@
           - bison
           - bluez
           - build-essential
-          - cmake
           - curl
           - dkms
           - fbi
