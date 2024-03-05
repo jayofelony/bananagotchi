@@ -3,7 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pwnagotchi"
+name = "bananagotchi"
 dynamic = ["version"]
 dependencies = [
     "Pillow",
@@ -51,8 +51,8 @@ classifiers = [
 [project.urls]
 Homepage = "https://pwnagotchi.org/"
 Documentation = "https://pwnagotchi.org/"
-Repository = "https://github.com/jayofelony/pwnagotchi.git"
-"Bug Tracker" = "https://github.com/jayofelony/pwnagotchi/issues"
+Repository = "https://github.com/jayofelony/bananagotchi.git"
+Issues = "https://github.com/jayofelony/bananagotchi/issues"
 
 [project.scripts]
-pwnagotchi_cli = "bin.pwnagotchi:pwnagotchi_cli"
+bananagotchi_cli = "bin.bananagotchi:bananagotchi_cli"

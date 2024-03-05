@@ -1,0 +1,20 @@
+[Unit]
+Description=bananagotchi Deep Reinforcement Learning instrumenting bettercap for WiFI pwning.
+Documentation=https://bananagotchi.org
+Wants=network.target
+After=pwngrid-peer.service
+
+[Service]
+Type=simple
+WorkingDirectory=~
+ExecStart=/usr/bin/bananagotchi-launcher
+ExecStopPost=/usr/bin/bash -c "if egrep -qi  'personality.clear_on_exit[ =]*true' /etc/bananagotchi/config.toml ; then /usr/local/bin/bananagotchi --clear; fi"
+Restart=always
+RestartSec=30
+TasksMax=infinity
+LimitNPROC=infinity
+StandardOutput=null
+StandardError=null
+
+[Install]
+WantedBy=multi-user.target

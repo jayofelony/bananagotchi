@@ -40,10 +40,10 @@ FILES_TO_BACKUP="/root/brain.nn \
   /root/.profile \
   /root/handshakes \
   /root/peers \
-  /etc/pwnagotchi/ \
+  /etc/bananagotchi/ \
   /etc/ssh/ \
-  /var/log/pwnagotchi.log \
-  /var/log/pwnagotchi*.gz \
+  /var/log/bananagotchi.log \
+  /var/log/bananagotchi*.gz \
   /home/pi/.ssh \
   /home/pi/.bashrc \
   /home/pi/.profile \

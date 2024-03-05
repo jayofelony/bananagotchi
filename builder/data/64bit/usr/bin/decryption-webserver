@@ -90,7 +90,7 @@ POST_RESPONSE = """
 </style>
 <script type="text/javascript">
 
-function checkPwnagotchi() {
+function checkbananagotchi() {
     var target = 'http://' + document.location.hostname + ':8080/';
     var xhr = new XMLHttpRequest();
     xhr.open('GET', target);
@@ -99,14 +99,14 @@ function checkPwnagotchi() {
             if (xhr.status == 200 || xhr.status == 401) {
                 window.location.replace(target);
             }else{
-                setTimeout(checkPwnagotchi, 1000);
+                setTimeout(checkbananagotchi, 1000);
             }
         }
     };
     xhr.send();
 }
 
-setTimeout(checkPwnagotchi, 1000);
+setTimeout(checkbananagotchi, 1000);
 
 </script>
 </head>
@@ -120,6 +120,7 @@ setTimeout(checkPwnagotchi, 1000);
 
 HTML_FORM = None
 
+
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
@@ -131,14 +132,14 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         content_length = int(self.headers['Content-Length'])
         body = self.rfile.read(content_length)
         for mapping, password in parse_qsl(body.decode('UTF-8')):
-            with open('/tmp/.pwnagotchi-secret-{}'.format(mapping), 'wt') as pwfile:
+            with open('/tmp/.bananagotchi-secret-{}'.format(mapping), 'wt') as pwfile:
                 pwfile.write(password)
         self.send_response(200)
         self.end_headers()
         self.wfile.write(POST_RESPONSE.encode())
 
 
-with open('/root/.pwnagotchi-crypted') as crypted_file:
+with open('/root/.bananagotchi-crypted') as crypted_file:
     mappings = [line.split()[0] for line in crypted_file.readlines()]
     fields = ''.join(['<label for="{m}">Passphrase for {m}:</label>\n<input type="password" id="{m}" name="{m}" value=""><br>'.format(m=m)
               for m in mappings])

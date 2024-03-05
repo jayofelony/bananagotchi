@@ -3,6 +3,6 @@ include setup.py
 include README.md
 include LICENSE
 recursive-include bin *
-recursive-include pwnagotchi *.py
-recursive-include pwnagotchi *.toml
-recursive-include pwnagotchi *.*
+recursive-include bananagotchi *.py
+recursive-include bananagotchi *.toml
+recursive-include bananagotchi *.*

@@ -1,6 +1,6 @@
 PACKER_VERSION := 1.10.1
 PWN_HOSTNAME := bananagotchi
-PWN_VERSION := $(shell cut -d"'" -f2 < pwnagotchi/_version.py)
+PWN_VERSION := $(shell cut -d"'" -f2 < bananagotchi/_version.py)
 
 MACHINE_TYPE := $(shell uname -m)
 ifneq (,$(filter x86_64,$(MACHINE_TYPE)))
@@ -29,13 +29,13 @@ endif
 all: clean packer image
 
 update_langs:
-	@for lang in pwnagotchi/locale/*/; do\
+	@for lang in banangotchi/locale/*/; do\
 		echo "updating language: $$lang ..."; \
 		./scripts/language.sh update $$(basename $$lang); \
 	done
 
 compile_langs:
-	@for lang in pwnagotchi/locale/*/; do\
+	@for lang in bananagotchi/locale/*/; do\
 		echo "compiling language: $$lang ..."; \
 		./scripts/language.sh compile $$(basename $$lang); \
 	done

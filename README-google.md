@@ -32,7 +32,7 @@ Then copy your client_id and client_secret to /root/settings.yaml
 
 When you have done this please run the following command in your ssh shell:
 
-`sudo pwnagotchi google login`
+`sudo bananagotchi google login`
 
 And follow the steps, after which you can enable the plugin and let the magic begin.
 

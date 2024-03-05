@@ -2,18 +2,18 @@ _show_complete()
 {
     local cur opts node_names all_options opt_line
     all_options="
-pwnagotchi -h --help -C --config -U --user-config --manual --skip-session --clear --debug --version --print-config --check-update --donate {plugins,google}
-pwnagotchi plugins -h --help {list,install,enable,disable,uninstall,update,upgrade}
-pwnagotchi plugins list -i --installed -h --help
-pwnagotchi plugins install -h --help
-pwnagotchi plugins uninstall -h --help
-pwnagotchi plugins enable -h --help
-pwnagotchi plugins disable -h --help
-pwnagotchi plugins update -h --help
-pwnagotchi plugins upgrade -h --help
-pwnagotchi google -h --help {login,refresh}
-pwnagotchi google login -h --help
-pwnagotchi google refresh -h --help
+bananagotchi -h --help -C --config -U --user-config --manual --skip-session --clear --debug --version --print-config --check-update --donate {plugins,google}
+bananagotchi plugins -h --help {list,install,enable,disable,uninstall,update,upgrade}
+bananagotchi plugins list -i --installed -h --help
+bananagotchi plugins install -h --help
+bananagotchi plugins uninstall -h --help
+bananagotchi plugins enable -h --help
+bananagotchi plugins disable -h --help
+bananagotchi plugins update -h --help
+bananagotchi plugins upgrade -h --help
+bananagotchi google -h --help {login,refresh}
+bananagotchi google login -h --help
+bananagotchi google refresh -h --help
 "
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
@@ -33,4 +33,4 @@ pwnagotchi google refresh -h --help
     COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
 }
 
-complete -F _show_complete pwnagotchi
+complete -F _show_complete bananagotchi

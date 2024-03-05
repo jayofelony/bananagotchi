@@ -1,9 +1,9 @@
 <#
     .SYNOPSIS
-        A script that setups Internet Connection Sharing for Pwnagotchi.
+        A script that setups Internet Connection Sharing for bananagotchi.
     
     .DESCRIPTION
-        A script that setups Internet Connection Sharing for Pwnagotchi. 
+        A script that setups Internet Connection Sharing for bananagotchi.
 
         Note: Internet Connection Sharing on Windows can be a bit unstable on between reboots.
               You might need to run this script occasionally to disable and re-enable Internet Connection Sharing.
@@ -14,8 +14,8 @@
     .PARAMETER DisableInternetConnectionSharing
         Disable Internet Connection Sharing
     
-    .PARAMETER SetPwnagotchiSubnet
-        Change the Internet Connection Sharing subnet to the Pwnagotchi subnet. The USB Gadget Interface IP will default to 10.0.0.1.
+    .PARAMETER SetbananagotchiSubnet
+        Change the Internet Connection Sharing subnet to the bananagotchi subnet. The USB Gadget Interface IP will default to 10.0.0.1.
     
     .PARAMETER ScopeAddress
         Custom ScopeAddress (The IP Address of the USB Gadget Interface.)
@@ -29,12 +29,12 @@
         PS C:\> .\win_connection_share -DisableInternetConnectionSharing
 
     .EXAMPLE
-        # Change the regkeys of Internet Connection Sharing to the Pwnagotchi Subnet
-        PS C:\> .\win_connection_share -SetPwnagotchiSubnet
+        # Change the regkeys of Internet Connection Sharing to the bananagotchi Subnet
+        PS C:\> .\win_connection_share -SetbananagotchiSubnet
 
     .EXAMPLE
-        # Change the regkeys of Internet Connection Sharing to the Pwnagotchi Subnet with a custom ScopeAddress (The IP Address of the USB Gadget Interface.)
-        PS C:\> .\win_connection_share -SetPwnagotchiSubnet -ScopeAddress 10.0.0.10
+        # Change the regkeys of Internet Connection Sharing to the bananagotchi Subnet with a custom ScopeAddress (The IP Address of the USB Gadget Interface.)
+        PS C:\> .\win_connection_share -SetbananagotchiSubnet -ScopeAddress 10.0.0.10
 #>
 
 #Requires -Version 5
@@ -43,7 +43,7 @@
 Param (
     [switch]$EnableInternetConnectionSharing,
     [switch]$DisableInternetConnectionSharing,
-    [switch]$SetPwnagotchiSubnet,
+    [switch]$SetbananagotchiSubnet,
     [ipaddress]$ScopeAddress = '10.0.0.1'
 )
 
@@ -126,7 +126,7 @@ Function Disable-InternetConnectionSharing {
     $HNetObject.RNDISIntConfig.DisableSharing()
     Write-Output "[x] Disabled Internet Connection Sharing."
 }
-Function Test-PwnagotchiSubnet {
+Function Test-bananagotchiSubnet {
     <#
     .SYNOPSIS
         Tests the registry for the correct ScopeAddress.
@@ -136,19 +136,19 @@ Function Test-PwnagotchiSubnet {
         in the registry.
     
     .EXAMPLE
-        PS> Test-PwnagotchiSubnet
-        [!] By default Internet Connection Sharing uses a 192.168.137.x subnet. Run Set-PwnagotchiSubnet to ensure you and your little friend are on the same subnet.
+        PS> Test-bananagotchiSubnet
+        [!] By default Internet Connection Sharing uses a 192.168.137.x subnet. Run Set-bananagotchiSubnet to ensure you and your little friend are on the same subnet.
     #>
     [Cmdletbinding()]
     $RegKeys = Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters -ErrorAction Stop
     If ($RegKeys.ScopeAddress -notmatch '10.0.0.') {
-        Write-Error "By default Internet Connection Sharing uses a 192.168.137.x subnet. Run Set-PwnagotchiSubnet to ensure you and your little friend are on the same subnet." -ErrorAction Stop
+        Write-Error "By default Internet Connection Sharing uses a 192.168.137.x subnet. Run Set-bananagotchiSubnet to ensure you and your little friend are on the same subnet." -ErrorAction Stop
     }
     If ($RegKeys.ScopeAddressBackup -notmatch '10.0.0.') {
-        Write-Error "By default Internet Connection Sharing uses a 192.168.137.x subnet. Run Set-PwnagotchiSubnet to ensure you and your little friend are on the same subnet." -ErrorAction Stop
+        Write-Error "By default Internet Connection Sharing uses a 192.168.137.x subnet. Run Set-bananagotchiSubnet to ensure you and your little friend are on the same subnet." -ErrorAction Stop
     } 
 }
-Function Set-PwnagotchiSubnet {
+Function Set-bananagotchiSubnet {
     <#
     .SYNOPSIS
         Set the registry for the correct ScopeAddress.
@@ -161,7 +161,7 @@ Function Set-PwnagotchiSubnet {
         The IP address the USB Gadget interface should use.
     
     .EXAMPLE
-    Set-PwnagotchiSubnet
+    Set-bananagotchiSubnet
     
     #>
     [Cmdletbinding()]
@@ -185,7 +185,7 @@ Function Set-PwnagotchiSubnet {
 }
 
 # Main Function
-Function Setup-PwnagotchiNetwork {
+Function Setup-bananagotchiNetwork {
     <#
     .SYNOPSIS
         Function to setup networking.
@@ -199,21 +199,21 @@ Function Setup-PwnagotchiNetwork {
     .PARAMETER DisableInternetConnectionSharing
         Disable Internet Connection Sharing
     
-    .PARAMETER SetPwnagotchiSubnet
-        Change the Internet Connection Sharing subnet to the Pwnagotchi. Defaults to 10.0.0.1.
+    .PARAMETER SetbananagotchiSubnet
+        Change the Internet Connection Sharing subnet to the bananagotchi. Defaults to 10.0.0.1.
     
     .PARAMETER ScopeAddress
         Custom ScopeAddress (the ICS ip address)
     
     .EXAMPLE
-        PS> Setup-PwnagotchiNetwork -EnableInternetConnectionSharing
+        PS> Setup-bananagotchiNetwork -EnableInternetConnectionSharing
     
     #>
     
     Param (
         [switch]$EnableInternetConnectionSharing,
         [switch]$DisableInternetConnectionSharing,
-        [switch]$SetPwnagotchiSubnet,
+        [switch]$SetbananagotchiSubnet,
         $ScopeAddress = '10.0.0.1'
     )
     Begin {
@@ -222,13 +222,13 @@ Function Setup-PwnagotchiNetwork {
             $ErrorSplat=@{ErrorAction="stop"}
             Write-Debug "Testing subnet"
             Try {
-                Test-PwnagotchiSubnet @ErrorSplat
+                Test-bananagotchiSubnet @ErrorSplat
             } Catch {
-                If ($SetPwnagotchiSubnet) {
+                If ($SetbananagotchiSubnet) {
                     Write-Debug "Setting subnet"
-                    Set-PwnagotchiSubnet -ScopeAddress $ScopeAddress @ErrorSplat
+                    Set-bananagotchiSubnet -ScopeAddress $ScopeAddress @ErrorSplat
                 } Else {
-                    Write-Error "By default Internet Connection Sharing uses a 192.168.137.x subnet. Run this script with the -SetPwnagotchiSubnet to setup the network." -ErrorAction Stop
+                    Write-Error "By default Internet Connection Sharing uses a 192.168.137.x subnet. Run this script with the -SetbananagotchiSubnet to setup the network." -ErrorAction Stop
                 }
             }
         } Catch {
@@ -286,5 +286,5 @@ Function Select-NetAdaptor {
     } until ($Adaptors[$selection-1])
      Return $Adaptors[$selection-1]
 }
-# Dynamically create params for Setup-PwnagotchiNetwork function based of param input of script.
-Setup-PwnagotchiNetwork @psBoundParameters
+# Dynamically create params for Setup-bananagotchiNetwork function based of param input of script.
+Setup-bananagotchiNetwork @psBoundParameters

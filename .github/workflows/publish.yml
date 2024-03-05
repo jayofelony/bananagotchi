@@ -17,7 +17,7 @@ jobs:
       - name: Extract version from file
         id: get_version
         run: |
-          VERSION=$(cut -d "'" -f2 < pwnagotchi/_version.py)
+          VERSION=$(cut -d "'" -f2 < bananagotchi/_version.py)
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Get latest tag

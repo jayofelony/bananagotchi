@@ -40,7 +40,7 @@ build {
       "data/64bit/usr/bin/hdmion",
       "data/64bit/usr/bin/monstart",
       "data/64bit/usr/bin/monstop",
-      "data/64bit/usr/bin/pwnagotchi-launcher",
+      "data/64bit/usr/bin/bananagotchi-launcher",
       "data/64bit/usr/bin/pwnlib",
     ]
   }
@@ -52,7 +52,7 @@ build {
     destination = "/etc/systemd/system/"
     sources     = [
       "data/64bit/etc/systemd/system/bettercap.service",
-      "data/64bit/etc/systemd/system/pwnagotchi.service",
+      "data/64bit/etc/systemd/system/bananagotchi.service",
       "data/64bit/etc/systemd/system/pwngrid-peer.service",
     ]
   }

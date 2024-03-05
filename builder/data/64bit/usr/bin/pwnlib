@@ -59,16 +59,16 @@ is_interface_up() {
 # returns 0 if conditions for AUTO mode are met
 is_auto_mode() {
   # check override file first
-  if [ -f /root/.pwnagotchi-manual ]; then
+  if [ -f /root/.bananagotchi-manual ]; then
     # remove the override file if found
-    rm -rf /root/.pwnagotchi-manual
+    rm -rf /root/.bananagotchi-manual
     return 1
   fi
 
   # check override file first
-  if [ -f /root/.pwnagotchi-auto ]; then
+  if [ -f /root/.bananagotchi-auto ]; then
     # remove the override file if found
-    rm -rf /root/.pwnagotchi-auto
+    rm -rf /root/.bananagotchi-auto
     return 0
   fi
 
@@ -89,12 +89,12 @@ is_auto_mode() {
 # returns 0 if conditions for AUTO mode are met
 is_auto_mode_no_delete() {
   # check override file first
-  if [ -f /root/.pwnagotchi-manual ]; then
+  if [ -f /root/.bananagotchi-manual ]; then
     return 1
   fi
 
   # check override file first
-  if [ -f /root/.pwnagotchi-auto ]; then
+  if [ -f /root/.bananagotchi-auto ]; then
     return 0
   fi
 
@@ -114,7 +114,7 @@ is_auto_mode_no_delete() {
 
 # check if we need to decrypt something
 is_crypted_mode() {
-  if [ -f /root/.pwnagotchi-crypted ]; then
+  if [ -f /root/.bananagotchi-crypted ]; then
     return 0
   fi
   return 1
@@ -129,8 +129,8 @@ is_decrypted() {
 
     # fail if not mounted
     if ! mountpoint -q "$mount" >/dev/null 2>&1; then
-      if [ -f /tmp/.pwnagotchi-secret-"$mapping" ]; then
-        </tmp/.pwnagotchi-secret-"$mapping" read -r SECRET
+      if [ -f /tmp/.bananagotchi-secret-"$mapping" ]; then
+        </tmp/.bananagotchi-secret-"$mapping" read -r SECRET
         if ! test -b /dev/disk/by-id/dm-uuid-*"$(cryptsetup luksUUID "$container" | tr -d -)"*; then
           if echo -n "$SECRET" | cryptsetup luksOpen -d- "$container" "$mapping" >/dev/null 2>&1; then
             echo "Container decrypted!"
@@ -161,7 +161,7 @@ network={
     ssid="DECRYPT-ME"
     mode=2
     key_mgmt=WPA-PSK
-    psk="pwnagotchi"
+    psk="bananagotchi"
     frequency=2437
 }
 EOF
@@ -174,12 +174,12 @@ EOF
 
       return 1
     fi
-  done </root/.pwnagotchi-crypted
+  done </root/.bananagotchi-crypted
 
   # overwrite passwords
-  python3 -c 'print("A"*4096)' | tee /tmp/.pwnagotchi-secret-* >/dev/null
+  python3 -c 'print("A"*4096)' | tee /tmp/.bananagotchi-secret-* >/dev/null
   # delete
-  rm /tmp/.pwnagotchi-secret-*
+  rm /tmp/.bananagotchi-secret-*
   sync # flush
 
   pkill wpa_supplicant

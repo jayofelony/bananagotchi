@@ -15,7 +15,7 @@ log = logging.getLogger(__name__)
 
 def install_file(source_filename, dest_filename):
     # do not overwrite network configuration if it exists already
-    # https://github.com/evilsocket/pwnagotchi/issues/483
+    # https://github.com/evilsocket/bananagotchi/issues/483
     if dest_filename.startswith('/etc/network/interfaces.d/') and dest_filename.startswith('/root/') and os.path.exists(dest_filename):
         log.info(f"{dest_filename} exists, skipping ...")
         return
@@ -47,7 +47,7 @@ def restart_services():
     # reload systemd units
     os.system("systemctl daemon-reload")
 
-    # for people updating https://github.com/evilsocket/pwnagotchi/pull/551/files
+    # for people updating https://github.com/evilsocket/bananagotchi/pull/551/files
     os.system("systemctl enable fstrim.timer")
 
 
@@ -56,7 +56,7 @@ class CustomInstall(install):
         super().run()
         if os.geteuid() != 0:
             warnings.warn(
-                "Not running as root, can't install pwnagotchi system files!"
+                "Not running as root, can't install bananagotchi system files!"
             )
             return
         install_system_files()
@@ -81,15 +81,15 @@ with open('requirements.txt') as fp:
         if line.strip() and not line.startswith("--")
     ]
 
-VERSION_FILE = 'pwnagotchi/_version.py'
-pwnagotchi_version = version(VERSION_FILE)
+VERSION_FILE = 'bananagotchi/_version.py'
+bananagotchi_version = version(VERSION_FILE)
 
-setup(name='pwnagotchi',
-      version=pwnagotchi_version,
+setup(name='bananagotchi',
+      version=bananagotchi_version,
       description='(⌐■_■) - Deep Reinforcement Learning instrumenting bettercap for WiFI pwning.',
       author='evilsocket && the dev team',
       author_email='evilsocket@gmail.com',
-      url='https://pwnagotchi.ai/',
+      url='https://bananagotchi.ai/',
       license='GPL',
       install_requires=[
           required,
@@ -97,8 +97,8 @@ setup(name='pwnagotchi',
       cmdclass={
           "install": CustomInstall,
       },
-      scripts=['bin/pwnagotchi'],
-      package_data={'pwnagotchi': ['defaults.toml', 'pwnagotchi/defaults.toml', 'locale/*/LC_MESSAGES/*.mo']},
+      scripts=['bin/bananagotchi'],
+      package_data={'bananagotchi': ['defaults.toml', 'bananagotchi/defaults.toml', 'locale/*/LC_MESSAGES/*.mo']},
       include_package_data=True,
       packages=find_packages(),
       classifiers=[
