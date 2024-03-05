@@ -1,4 +1,4 @@
-main.name = "bananagotchi"
+main.name = "pwnagotchi"
 main.lang = "en"
 main.whitelist = [
     "EXAMPLE_NETWORK",
@@ -32,7 +32,7 @@ main.plugins.bt-tether.devices.android-phone.netmask = 24
 main.plugins.bt-tether.devices.android-phone.interval = 1
 main.plugins.bt-tether.devices.android-phone.scantime = 10
 main.plugins.bt-tether.devices.android-phone.max_tries = 10
-main.plugins.bt-tether.devices.android-phone.share_internet = false
+main.plugins.bt-tether.devices.android-phone.share_internet = true
 main.plugins.bt-tether.devices.android-phone.priority = 1
 
 main.plugins.bt-tether.devices.ios-phone.enabled = false
@@ -43,7 +43,7 @@ main.plugins.bt-tether.devices.ios-phone.netmask = 24
 main.plugins.bt-tether.devices.ios-phone.interval = 5
 main.plugins.bt-tether.devices.ios-phone.scantime = 20
 main.plugins.bt-tether.devices.ios-phone.max_tries = 0
-main.plugins.bt-tether.devices.ios-phone.share_internet = false
+main.plugins.bt-tether.devices.ios-phone.share_internet = true
 main.plugins.bt-tether.devices.ios-phone.priority = 999
 
 main.plugins.fix_services.enabled = true
@@ -154,6 +154,8 @@ personality.throttle_d = 0.9
 
 personality.clear_on_exit = true # clear display when shutting down cleanly
 
+ui.invert = false # false = black background, true = white background
+
 ui.fps = 0.0
 ui.font.name = "DejaVuSansMono" # for japanese: fonts-japanese-gothic
 ui.font.size_offset = 0 # will be added to the font size
@@ -198,7 +200,6 @@ ui.web.on_frame = ""
 ui.display.enabled = false
 ui.display.rotation = 180
 ui.display.type = "waveshare_4"
-ui.display.color = "black" # required for waveshare_2
 
 bettercap.handshakes = "/root/handshakes"
 bettercap.silence = [

@@ -8,6 +8,7 @@ import os
 import re
 import shutil
 import warnings
+import platform
 
 log = logging.getLogger(__name__)
 
@@ -97,7 +98,7 @@ setup(name='pwnagotchi',
           "install": CustomInstall,
       },
       scripts=['bin/pwnagotchi'],
-      package_data={'pwnagotchi': ['defaults.yml', 'pwnagotchi/defaults.toml', 'locale/*/LC_MESSAGES/*.mo']},
+      package_data={'pwnagotchi': ['defaults.toml', 'pwnagotchi/defaults.toml', 'locale/*/LC_MESSAGES/*.mo']},
       include_package_data=True,
       packages=find_packages(),
       classifiers=[
