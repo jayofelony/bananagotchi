@@ -52,7 +52,7 @@ classifiers = [
 Homepage = "https://pwnagotchi.org/"
 Documentation = "https://pwnagotchi.org/"
 Repository = "https://github.com/jayofelony/pwnagotchi.git"
-"Bug Tracker" = "https://github.com/jayofelony/pwnagotchi.git/issues"
+"Bug Tracker" = "https://github.com/jayofelony/pwnagotchi/issues"
 
 [project.scripts]
 pwnagotchi_cli = "bin.pwnagotchi"
