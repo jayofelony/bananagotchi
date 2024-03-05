@@ -152,6 +152,9 @@
           - xxd
           - zlib1g-dev
           - zram-tools
+    environment:
+      QEMU_UNAME: "{{ kernel.full }}"
+      ARCHFLAGS: "-arch aarch64"
 
   tasks:
     # First we install packages
