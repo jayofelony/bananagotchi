@@ -20,7 +20,7 @@ source "arm-image" "m4zero" {
   iso_url           = "https://github.com/jayofelony/bananagotchi/releases/download/v1.0/bpim40.img.xz"
   image_type        = "armbian"
   image_arch        = "arm64"
-  qemu_args         = ["-r", "6.1.79"]
+  qemu_args         = ["-r", "6.1.80"]
   target_image_size = 9368709120
   output_filename   = "../bananagotchi-64bit.img"
 }
@@ -75,6 +75,6 @@ build {
   provisioner "ansible-local" {
     command         = "ANSIBLE_FORCE_COLOR=1 PYTHONUNBUFFERED=1 PWN_VERSION=${var.pwn_version} PWN_HOSTNAME=${var.pwn_hostname} ansible-playbook"
     extra_arguments = ["--extra-vars \"ansible_python_interpreter=/usr/bin/python3\""]
-    playbook_file   = "m4zero.yml"
+    playbook_file   = "data/64bit/m4zero.yml"
   }
 }
