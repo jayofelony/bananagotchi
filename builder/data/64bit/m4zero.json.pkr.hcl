@@ -20,7 +20,6 @@ source "arm-image" "m4zero" {
   iso_url           = "https://github.com/jayofelony/bananagotchi/releases/download/v1.0/bpim40.img.xz"
   image_type        = "armbian"
   image_arch        = "arm64"
-  qemu_args         = ["-r", "6.1.80"]
   target_image_size = 9368709120
   output_filename   = "../bananagotchi-64bit.img"
 }
