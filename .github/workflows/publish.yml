@@ -34,7 +34,7 @@ jobs:
         run: ls -la .; pwd; make all
 
       - name: Transfer 64bit.img to docker and give permissions
-        run: sudo chown runner:docker "*.img"
+        run: sudo chown runner:docker "bananagotchi-64bit.img"
 
       - name: PiShrink
         run: |
