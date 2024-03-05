@@ -168,6 +168,21 @@
         executable: /bin/bash
         chdir: /usr/local/src
 
+    - name: clone pwnagotchi repository
+      git:
+        repo: https://github.com/jayofelony/bananagotchi.git
+        dest: /usr/local/src/pwnagotchi
+
+    - name: build pwnagotchi wheel
+      command: "pip3 install . --no-cache-dir --break-system-packages"
+      args:
+        chdir: /usr/local/src/pwnagotchi
+
+    - name: remove pwnagotchi folder
+      file:
+        state: absent
+        path: /usr/local/src/pwnagotchi
+
     - name: set resolv.conf
       blockinfile:
         dest: /etc/resolv.conf
@@ -271,21 +286,6 @@
       file:
         path: /etc/pwnagotchi/conf.d/
         state: directory
-
-    - name: clone pwnagotchi repository
-      git:
-        repo: https://github.com/jayofelony/bananagotchi.git
-        dest: /usr/local/src/pwnagotchi
-
-    - name: build pwnagotchi wheel
-      command: "pip3 install . --no-cache-dir --break-system-packages"
-      args:
-        chdir: /usr/local/src/pwnagotchi
-
-    - name: remove pwnagotchi folder
-      file:
-        state: absent
-        path: /usr/local/src/pwnagotchi
 
     - name: create /usr/local/share/pwnagotchi/ folder
       file:
